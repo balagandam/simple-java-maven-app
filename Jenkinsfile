@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Check Jar location'){
             steps{
-                sh "ls -al ~/target/*.jar"
+                sh "ls -al ./target/*.jar"
             }
         }
         stage('Build Docker Image'){
