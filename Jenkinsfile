@@ -31,15 +31,9 @@ pipeline {
                 sh "ls -al ./target/*.jar"
             }
         }
-        stage('Build Docker Image'){
-            agent any
+        stage('Copy jar file){
             steps{
-                sh "docker build -t bala-app -f Dockerfile"
-            }
-        }
-        stage('Run Container'){
-            steps{
-                sh 'docker run -p 8181:8080 -d -name myapp bala-app'
+                sh 'cp ./target/*.jar /var/jenkins_home/workspace/docker_image_build/'
             }
         }
     }
