@@ -26,5 +26,11 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
+        stage('Check Jar location'){
+            steps{
+                sh "ls -al ~/target/*.jar"
+            }
+        }
+
     }
 }
