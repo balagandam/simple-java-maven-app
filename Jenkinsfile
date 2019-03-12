@@ -32,13 +32,16 @@ pipeline {
             }
         }
         stage('Build Docker Image'){
+            agent {
+                dockerfile true
+            }
             steps{
-                sh 'docker build -t bala-app:1.0.0 .'
+                sh "docker build -t bala-app ."
             }
         }
         stage('Run Container'){
             steps{
-                sh 'docker run -p 8181:8080 -d -name myapp bala-app:1.0.0'
+                sh 'docker run -p 8181:8080 -d -name myapp bala-app'
             }
         }
     }
