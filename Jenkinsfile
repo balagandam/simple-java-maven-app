@@ -28,9 +28,18 @@ pipeline {
         }
         stage('Check Jar location'){
             steps{
-                sh 'ls -al ./target/*.jar'
+                sh "ls -al ~/target/*.jar"
             }
         }
-
+        stage('Build Docker Image'){
+            steps{
+                sh 'docker build -t bala-app:1.0.0 .'
+            }
+        }
+        stage('Run Container'){
+            steps{
+                sh 'docker run -p 8181:8080 -d -name myapp bala-app:1.0.0'
+            }
+        }
     }
 }
