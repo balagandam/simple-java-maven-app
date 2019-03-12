@@ -31,7 +31,7 @@ pipeline {
                 sh "ls -al ./target/*.jar"
             }
         }
-        stage('Copy jar file){
+        stage('Copy jar file'){
             steps{
                 sh 'cp ./target/*.jar /var/jenkins_home/workspace/docker_image_build/'
             }
