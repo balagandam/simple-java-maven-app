@@ -32,11 +32,9 @@ pipeline {
             }
         }
         stage('Build Docker Image'){
-            agent {
-                dockerfile true
-            }
+            agent any
             steps{
-                sh "docker build -t bala-app ."
+                sh "docker build -t bala-app -f Dockerfile"
             }
         }
         stage('Run Container'){
